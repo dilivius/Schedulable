@@ -8,6 +8,7 @@ en:
         name: Name
         rule: Regel
         time: Time
+        time_end: Time End
         date: Date
         rule: Rule
         day: Weekdays
