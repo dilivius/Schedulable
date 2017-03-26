@@ -62,8 +62,16 @@ module Schedulable
         end
         time_string = time.strftime("%d-%m-%Y %I:%M %p")
         time = Time.zone.parse(time_string)
+        
+        time_end = Date.today.to_time(:utc)
+        if self.time_end.present?
+          time_end = time_end + self.time_end.seconds_since_midnight.seconds
+          schedule_time_end = time_end - time
+        else
+          schedule_time_end = 0
+        end
 
-        @schedule = IceCube::Schedule.new(time, duration: IceCube::ONE_HOUR))
+        @schedule = IceCube::Schedule.new(time, duration: schedule_time_end)
 
         if self.rule && self.rule != 'singular'
 
