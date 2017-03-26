@@ -172,10 +172,10 @@ module Schedulable
             end <<
               
             # Time End Select
- +          @template.content_tag("div", style_options[:field_html].merge({data: {group: 'singular,daily,weekly,monthly'}})) do
- +            content_wrap(@template, f.label(:time_end, style_options[:label_html]), style_options[:label_wrapper]) <<
- +            content_wrap(@template, f.send(input_types[:time].to_sym, *[:time_end].concat(f.method(input_types[:time].to_sym).parameters.count >= 3 ? [date_options] : []).concat([style_options[:date_select_html].clone])), style_options[:date_select_wrapper])
- +          end <<
+            @template.content_tag("div", style_options[:field_html].merge({data: {group: 'singular,daily,weekly,monthly'}})) do
+              content_wrap(@template, f.label(:time_end, style_options[:label_html]), style_options[:label_wrapper]) <<
+              content_wrap(@template, f.send(input_types[:time].to_sym, *[:time_end].concat(f.method(input_types[:time].to_sym).parameters.count >= 3 ? [date_options] : []).concat([style_options[:date_select_html].clone])), style_options[:date_select_wrapper])
+            end <<
             
             # Optional Fields...
             
